@@ -8,27 +8,26 @@
 # comments
 # here
 
-def day_of_week(year, month, day):
-    """Calculates the day of the week using Zeller's congruence."""
-
+def date(year, month, day):
+    
     if month < 3:
         month += 12
         year -= 1
 
-    k = year % 100
-    j = year // 100
+    y = year % 100
+    z = year // 100
 
-    h = (day + (13 * (month + 1) // 5) + k + (k // 4) + (j // 4) - (2 * j)) % 7
+    x = (day + (13 * (month + 1) // 5) + y + (y // 4) + (z // 4) - (2 * z)) % 7
 
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    return days[h]
+    return days[x]
 
-def main():
-    date_str = input("Enter a date in MM/DD/YYYY format: ")
+def date_with_weekday():
+    date_str = input("Please input a date (MM/DD/YYYY): ")
     month, day, year = map(int, date_str.split("/"))
 
-    day_name = day_of_week(year, month, day)
+    day_name = date(year, month, day)
     print(f"{date_str} is a {day_name}")
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__date_with_weekday__":
+    date_with_weekday()
